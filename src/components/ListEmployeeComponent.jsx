@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import EmployeeService from '../services/EmployeeService'
 
  class ListEmployeeComponent extends Component {
 
@@ -10,6 +11,12 @@ import React, { Component } from 'react'
     }
   }
 
+  //component did mount is the best method to call for AJAX calls
+  componentDidMount(){
+      EmployeeService.getEmployees().then((res)=>{
+         this.setState({ employees: res.data})
+      })
+  }
 
 
   render() {
